@@ -17,22 +17,18 @@ RUN echo "tzdata tzdata/Areas select America" > /tmp/preseed.txt; \
 RUN apt-get install -y git iputils-ping wget unzip curl nano build-essential
 
 ## Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt-get install -y nodejs
 
-## Install MariaDB
-RUN apt-get install -y mariadb-server
-
-## Install MongoDB
-RUN apt-get install -y mongodb
+## Install Yarn
+RUN npm install --global yarn
 
 ## Ports
 EXPOSE 3000
-EXPOSE 3306
-EXPOSE 27017
+EXPOSE 3030
 
 # Workdir
 WORKDIR /home/
 
 # Entrypoint
-ENTRYPOINT service mysql start && service mongodb start && /bin/bash
+ENTRYPOINT /bin/bash
