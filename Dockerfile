@@ -17,7 +17,7 @@ RUN echo "tzdata tzdata/Areas select America" > /tmp/preseed.txt; \
 RUN apt-get install -y git iputils-ping wget unzip curl nano build-essential
 
 ## Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt-get install -y nodejs
 
 ## Install MariaDB
